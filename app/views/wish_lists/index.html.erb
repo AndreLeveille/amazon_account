@@ -1,0 +1,17 @@
+<%# <h2>Welcome <%= current_user.name %></h2>
+<h2><%= current_user.email %></h2>
+<%# <h2>Name:<%= current_user.name %></h2> 
+<h2> Wish Lists: </h2>
+
+<%= link_to 'Create new wish list', new_wish_list_path %>
+
+<ul>
+    <% @wish_lists.each do |list| %>
+        <li>
+           
+            <%= list.name %> <%= button_to 'Edit this list', edit_wish_list_path(list) %> 
+            <%= button_to 'Delete this wish list', wish_list_path(list), method: :delete%>
+        </li>
+    <% end %>
+</ul>
+<%= button_to 'Log Out', destroy_user_session_path, method: :delete %>

@@ -2,12 +2,8 @@
 
 one:
   name: MyString
-  balance: 1.5
-  wish_list: MyString
   user: one
 
 two:
   name: MyString
-  balance: 1.5
-  wish_list: MyString
   user: two
