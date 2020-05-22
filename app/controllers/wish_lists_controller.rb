@@ -14,6 +14,12 @@ class WishListsController < ApplicationController
   end
 
   def update
+    @wish_list = current_user.wish_lists.find(params[:id])
+    if @wish_list.update(list_params)
+      redirect_to root_path
+    else
+      render :edit
+    end 
   end 
 
   def create
@@ -31,8 +37,10 @@ class WishListsController < ApplicationController
   end
 
   def destroy
-    @wish_list = current_user.wish_list(params[:id]).destroy
-    redirect_to index_path
+    # @wish_list = current_user.wish_lists.destroy
+    current_user.wish_lists.find(params[:id]).destroy
+    # current_user.wish_lists.destroy
+    redirect_to wish_lists_path
   end 
 
   private 
